@@ -18,6 +18,8 @@ public interface TasksContract {
 
         void showSuccessfullySavedMessage();
 
+        void showLoadingTasksError();
+
         boolean isActive();
     }
 
