@@ -7,6 +7,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -64,7 +65,6 @@ public class TasksFragment extends Fragment{
         //Set up mTasks view
 
         ListView listView = root.findViewById(R.id.tasks_list);
-        //TODO setAdapter
         listView.setAdapter(mTasksAdapter);
 
         FloatingActionButton fabAdd = getActivity().findViewById(R.id.fab_add_task);
@@ -76,6 +76,18 @@ public class TasksFragment extends Fragment{
 
         fabDelAll.setImageResource(R.drawable.ic_delete_white_24dp);
         //TODO set fabDelAll onClickListener
+
+
+        //Set up progress indicator
+        final ScrollChildSwipeRefreshLayout swipeRefreshLayout =
+                root.findViewById(R.id.refresh_layout);
+        swipeRefreshLayout.setColorSchemeColors(
+                ContextCompat.getColor(getActivity(), R.color.colorPrimary),
+                ContextCompat.getColor(getActivity(), R.color.colorAccent),
+                ContextCompat.getColor(getActivity(), R.color.colorPrimaryDark)
+        );
+        //Set the scrolling view in the custom SwipeRefreshLayout
+        swipeRefreshLayout.setScrollUpChild(listView);
 
         return root;
     }
