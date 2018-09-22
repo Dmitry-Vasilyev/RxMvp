@@ -89,6 +89,8 @@ public class TasksFragment extends Fragment{
         //Set the scrolling view in the custom SwipeRefreshLayout
         swipeRefreshLayout.setScrollUpChild(listView);
 
+        //TODO set swipeRefreshLayout onScrollUpListener
+
         return root;
     }
 
