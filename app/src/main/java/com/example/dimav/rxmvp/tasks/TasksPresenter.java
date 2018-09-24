@@ -6,6 +6,7 @@ import com.example.dimav.rxmvp.data.TasksRepository;
 import com.example.dimav.rxmvp.util.BaseSchedulerProvider;
 
 import io.reactivex.disposables.CompositeDisposable;
+import io.reactivex.disposables.Disposable;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
@@ -58,6 +59,12 @@ public class TasksPresenter implements TasksContract.Presenter {
     @Override
     public void loadTasks() {
 
+    }
+
+    private void loadTasks(final boolean showLoadingUI) {
+        if(showLoadingUI) mTasksView.setLoadingIndicator(true);
+
+        mCompositeDisposable.clear();
     }
 
     @Override

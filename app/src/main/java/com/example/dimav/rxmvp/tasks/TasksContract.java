@@ -20,6 +20,8 @@ public interface TasksContract {
 
         void showLoadingTasksError();
 
+        void showNoTasks();
+
         boolean isActive();
     }
 

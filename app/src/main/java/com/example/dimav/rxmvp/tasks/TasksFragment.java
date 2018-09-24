@@ -46,17 +46,7 @@ public class TasksFragment extends Fragment implements TasksContract.View {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        List<Task> tasks = new ArrayList<>();
-        for(int i = 0; i < 10; i++) {
-            tasks.add(new Task("Title" + (i+1), getResources().getString(R.string.lorem10)));
-        }
-        Observable.range(1, 10)
-                .flatMap(num -> Observable.just(
-                        new Task("Lambda" + (num),
-                                getResources().getString(R.string.lorem10))))
-                .subscribe(tasks::add);
-
-        mTasksAdapter = new TasksAdapter(tasks);
+        mTasksAdapter = new TasksAdapter(new ArrayList<>(0));
     }
 
     @Nullable
@@ -123,6 +113,11 @@ public class TasksFragment extends Fragment implements TasksContract.View {
     @Override
     public void showLoadingTasksError() {
         showMessage(getString(R.string.loading_task_error));
+    }
+
+    @Override
+    public void showNoTasks() {
+        showMessage(getString(R.string.no_tasks));
     }
 
     @Override
